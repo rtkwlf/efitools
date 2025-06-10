@@ -49,7 +49,11 @@ jobs:
 
       - name: Block Pull Request if Old Vulnerabilities Found
         run: |
+           pwd
+           ls
            cd $CWD
+           pwd
+           ls
            for results in "" "include-" "local-include-"; do
              # Parse vulnerabilities from Snyk results
              jq -c '.vulnerabilities[] | select(.severity == "high" or .severity == "critical")' "$results"snyk-results.json > filtered-vulnerabilities.json
