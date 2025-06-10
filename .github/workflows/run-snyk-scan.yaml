@@ -40,8 +40,11 @@ jobs:
           cd /usr/include && snyk test --unmanaged --severity-threshold=high --json > $CWD/include-snyk-results.json || true
           cd /usr/local/include && snyk test --unmanaged --severity-threshold=high --json > $CWD/local-include-snyk-results.json || true
 
+          echo snyk-results.json:
           cat $CWD/snyk-results.json
+          echo include-snyk-results.json:
           cat $CWD/include-snyk-results.json
+          echo local-include-snyk-results.json:
           cat $CWD/local-include-snyk-results.json
 
       - name: Block Pull Request if Old Vulnerabilities Found
